@@ -1,27 +1,35 @@
+@model List<Category>
+    <h3 class="mx-auto head1 center1">@ViewBag.ViewProd.Name </h3>
 
-<h3>Household</h3>
+    <div class="row">
 
-<div>
+        <div class="center1 card col-6 ">
+            <h4 class="center1">Categories:</h4>
+            @foreach(var c in Model)
+            {
+            if(c.AllProducts.All(p => p.ProductId != ViewBag.ViewProd.ProductId))
+            {
+            <h5>- @c.Name</h5>
+            }
 
-    <div>
-        <h4>Products:</h4>
-        @* @foreach()
-        { *@
-            <p></p>
-        @* } *@
+            }
+        </div>
+
+        <div class="col-2">
+            <form class="center1" action="/connect" method="post">
+                <h4>Add Category:</h4>
+                <input type="hidden" name="ProductId" value="@ViewBag.ViewProd.ProductId">
+                <select name="CategoryId" class="form-control" id="">
+                    @foreach(var c in Model)
+                    {
+                    if(c.AllProducts.All(p => p.ProductId != ViewBag.ViewProd.ProductId))
+                    {
+                    <option value="@c.CategoryId">@c.Name</option>
+                    }
+                    }
+                </select>
+                <button type="sumbit" class="btn btn-outline-dark">Add</button>
+            </form>
+        </div>
+        
     </div>
-
-    <div>
-        <h6>Add Category:</h6>
-        <form action="">
-        <select name="" id="">
-            @* @foreach()
-            { *@
-                <option value=""></option>
-            @* } *@
-        </select>
-        <button type="sumbit" class="btn btn-outline-dark">Add</button>
-        </form>
-    </div>
-
-</div>

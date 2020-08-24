@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProductsCategories.Models {
     public class Product {
+        
         [Key]
         public int ProductId { get; set; }
 
@@ -20,7 +21,7 @@ namespace ProductsCategories.Models {
 
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
-        List<Association> AllCategories { get; set; }
+        public List<Association> AllCategories { get; set; }
     }
 
 }

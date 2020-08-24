@@ -73,6 +73,10 @@ body {
 /* Extra sum sum
 -------------------------------------------------- */
 
+.center1 {
+  text-align: center;
+}
+
 .head1 {
   margin-bottom: 5em;
 }

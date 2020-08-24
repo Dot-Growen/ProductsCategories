@@ -1,7 +1,43 @@
+@model Product
 <div class="head1">
-        <div class="title1">
-            <h3>Products</h3>
-            <div class="line1"></div>
-            <h3><a href="/categories">Categories</a></h3>
+    <div class="title1">
+        <h3>Products</h3>
+        <div class="line1"></div>
+        <h3><a href="/categories">Categories</a></h3>
+    </div>
+</div>
+
+<div class="row mx-auto">
+    <div class="col-6">
+        <h4>New Product</h4>
+        <form action="/addproduct" method="post">
+            <div>
+                <label asp-for="Name"> Name</label>
+                <input class="form-control" asp-for="Name" type="text">
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div>
+                <label asp-for="Description">Description</label>
+                <input class="form-control" asp-for="Description" type="text">
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div>
+                <label asp-for="Price">Price</label>
+                <input class="form-control" asp-for="Price" type="number">
+                <span asp-validation-for="Price"></span>
+            </div>
+            <button class="btn btn-outline-dark" type="submit">Create</button>
+        </form>
+    </div>
+    
+    <div class="col-6 ">
+        <h4>Existing Products</h4>
+        <div>
+            @foreach (var p in ViewBag.AllProducts)
+            {
+            <a href="products/@p.ProductId">@p.Name</a>
+            }
         </div>
+    </div>
+
 </div>

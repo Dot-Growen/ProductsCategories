@@ -1,26 +1,36 @@
+@model Category
 <div class="head1">
-        <div class="title1">
-            <h3><a href="/products">Products</a></h3>
-            <div class="line1"></div>
-            <h3>Categories</h3>
-        </div>
-</div>
-
-<div>
-    <h4>New Category</h4>
-    <form action="" method="">
-        <label for="">Name</label>
-        <input type="text">
-        <button type="submit">Create</button>
-    </form>
-</div>
-
-<div>
-    <h4>Existing Categories</h4>
-    <div>
-        @* @foreach (var item in collection)
-        { *@
-            <a href=""></a>
-        @* } *@
+    <div class="title1">
+        <h3><a href="/products">Products</a></h3>
+        <div class="line1"></div>
+        <h3>Categories</h3>
     </div>
+</div>
+
+<div class="row mx-auto">
+
+    <div class="col-6">
+        <h4>New Category</h4>
+        <form action="/addcategory" method="post">
+            <label asp-for="Name">Name</label>
+            <input class="form-control" asp-for="Name" type="text">
+            <span asp-validation-for="Name"></span>
+            <button class="btn btn-outline-dark" type="submit">Create</button>
+        </form>
+    </div>
+
+    <div class="col-6 ">
+        <h4>Existing Categories</h4>
+        <div>
+            <ul>
+                @foreach (var c in ViewBag.AllCategories)
+                {
+                <li>
+                    <a href="/categories/@c.CategoryId">@c.Name</a>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+
 </div>

@@ -3,4 +3,4 @@ appsettings.json
 obj/
 .vscode/
 Migrations/
-MyContext.db
+MyContext2.db
